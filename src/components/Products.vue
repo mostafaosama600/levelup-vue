@@ -1,28 +1,60 @@
 <template>
   <div class="container mx-auto">
-    <div class="flex justify-between items-center gap-5 mx-3 my-3">
-      <div class="items mb-2 rounded border p-2">
-        <div class="content-body">
-          <h3 class="bg-black text-white inline-block px-1">Heading</h3>
-          <p>Lorem ipsum, dolor sit amet consectetur adipisicing</p>
+    <strong v-if="loading">loading...</strong>
+    <strong v-else-if="error">{{ error }}</strong>
+    <div v-else class="grid grid-cols-3 gap-4 mx-3 my-3">
+      <div
+        v-for="(product, index) in products"
+        :key="index"
+        class="mb-2 p-0 border-0 rounded-3xl bg-white"
+      >
+        <img
+          class="rounded-tl-3xl rounded-tr-3xl"
+          src="https://assets-global.website-files.com/61406347b8db463e379e2732/63480a867a204a115c632395_C4D-Ascent-p-500.jpg"
+          :alt="product.name"
+        />
+        <div class="content-body mx-3 my-3">
+          <h3 class="px-1 inline-block text-black font-bold text-xl">
+            {{ product.name }}
+          </h3>
+          <p class="text-[#7c868d]">{{ product.description }}</p>
           <div class="flex justify-between items-center mt-2">
-            <button class="bg-blue-500 text-white rounded-sm py-1 px-2">
-              Purchase
-            </button>
-            <button class="bg-red-500 text-white rounded-sm py-1 px-2">
-              Wishlist
-            </button>
+            <p class="m-1">price {{ product.price }}</p>
+            <p class="m-1">quantity {{ product.quantity }}</p>
           </div>
         </div>
       </div>
     </div>
   </div>
 </template>
+
 <script>
+import { onMounted, ref } from "vue";
+
 export default {
-  name: "Products",
-  data() {
-    return {};
+  setup() {
+    const products = ref([]);
+    const loading = ref(false);
+    const error = ref("");
+    const getData = async () => {
+      try {
+        loading.value = true;
+        const response = await fetch("http://localhost:3000/api/v1/products");
+        if (!response.ok) error.value = "something went wrong";
+        const data = await response.json();
+        products.value = data.result.slice(1, 10);
+      } catch (err) {
+        error.value = "something went wrong";
+      } finally {
+        loading.value = false;
+      }
+    };
+    onMounted(getData);
+    return {
+      loading,
+      products,
+      error,
+    };
   },
 };
 </script>
