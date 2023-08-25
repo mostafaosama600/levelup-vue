@@ -1,8 +1,8 @@
 <template>
   <div class="container mx-auto">
-    <strong v-if="loading">loading...</strong>
-    <strong v-else-if="error">{{ error }}</strong>
-    <div v-else class="grid grid-cols-3 gap-4 mx-3 my-3">
+    <div v-if="loading">loading...</div>
+    <div v-else-if="error" class="bg-red-200 p-2 rounded">{{ error }}</div>
+    <div class="grid grid-cols-3 gap-4 mx-3 my-3">
       <div
         v-for="(product, index) in products"
         :key="index"
