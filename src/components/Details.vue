@@ -6,12 +6,8 @@
           <h3 class="bg-black text-white inline-block px-1">Heading</h3>
           <p>Lorem ipsum, dolor sit amet consectetur adipisicing</p>
           <div class="flex justify-between items-center mt-2">
-            <button class="bg-blue-500 text-white rounded-sm py-1 px-2">
-              Purchase
-            </button>
-            <button class="bg-red-500 text-white rounded-sm py-1 px-2">
-              Wishlist
-            </button>
+            <p>price : 199$</p>
+            <p>quantity : 19</p>
           </div>
         </div>
       </div>
