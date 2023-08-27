@@ -18,10 +18,15 @@
             {{ product.name }}
           </h3>
           <p class="text-[#7c868d]">{{ product.description }}</p>
-          <div class="flex justify-between items-center mt-2">
+          <div class="flex justify-between items-center my-5">
             <p class="m-1">price {{ product.price }}</p>
             <p class="m-1">quantity {{ product.quantity }}</p>
           </div>
+          <router-link
+            class="rounded font-semibold border px-4 py-2 text-black"
+            :to="`/details/${product._id}`"
+            >Details</router-link
+          >
         </div>
       </div>
     </div>
