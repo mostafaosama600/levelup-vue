@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Products from "./pages/Products.vue";
-import Details from "./pages/Details.vue";
-import SearchResult from "./pages/SearchResult.vue";
+import Details from "./components/Details.vue";
+import SearchResult from "./components/SearchResult.vue";
 
 const routes = [
   { path: "/", component: Products },
