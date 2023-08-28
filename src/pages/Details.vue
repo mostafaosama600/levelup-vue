@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto">
+  <div class="container mx-auto mt-3">
     <div class="flex justify-between items-center gap-5 mx-3 my-3">
       <div class="items mb-2 rounded border p-2">
         <div class="content-body mx-3 my-3">

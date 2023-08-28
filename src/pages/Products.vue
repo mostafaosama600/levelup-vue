@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto">
+  <div class="container mx-auto mt-3">
     <div v-if="loading">loading...</div>
     <div v-else-if="error" class="bg-red-200 p-2 rounded">{{ error }}</div>
     <div class="grid grid-cols-3 gap-4 mx-3 my-3">
@@ -47,7 +47,7 @@ export default {
         const response = await fetch("http://localhost:3000/api/v1/products");
         if (!response.ok) error.value = "something went wrong";
         const data = await response.json();
-        products.value = data.result.slice(1, 10);
+        products.value = data.result;
       } catch (err) {
         error.value = "something went wrong";
       } finally {
