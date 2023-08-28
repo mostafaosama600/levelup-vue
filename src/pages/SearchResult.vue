@@ -48,9 +48,7 @@ export default {
         const response = await fetch(
           `http://localhost:3000/api/v1/products/?query=${searchQuery}`
         );
-        if (!response.ok) {
-          error.value = "Something went wrong";
-        }
+        if (!response.ok) error.value = "Something went wrong";
         const data = await response.json();
         products.value = data.result;
       } catch (err) {

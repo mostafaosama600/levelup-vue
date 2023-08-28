@@ -6,7 +6,7 @@ import SearchResult from "./pages/SearchResult.vue";
 const routes = [
   { path: "/", component: Products },
   { path: "/details/:id", component: Details, props: true },
-  { path: "/search", component: SearchResult, name: "SearchResult" },
+  { path: "/search-result", component: SearchResult, name: "SearchResult" },
 ];
 
 const router = createRouter({
