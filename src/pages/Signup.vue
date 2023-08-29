@@ -8,7 +8,7 @@
           <h1 class="text-xl font-bold text-gray-900 md:text-2xl">
             Sign up new account
           </h1>
-          <div v-if="errors === true" className="bg-red-200 p-2">
+          <div v-if="errors === true" className="bg-red-200 p-2 rounded">
             {{ errors }}
           </div>
 

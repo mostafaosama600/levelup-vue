@@ -1,7 +1,9 @@
 <template>
   <div class="container mx-auto mt-3">
-    <div v-if="loading">loading...</div>
-    <div v-else-if="error" class="bg-red-200 p-2 rounded">{{ error }}</div>
+    <Loading v-if="loading" />
+    <div v-else-if="error" class="bg-red-200 p-2 rounded">
+      {{ error }}
+    </div>
     <div class="grid grid-cols-3 gap-4 mx-3 my-3">
       <div
         v-for="(product, index) in products"
@@ -35,6 +37,7 @@
 
 <script>
 import { onMounted, ref } from "vue";
+import Loading from "../components/Loading.vue";
 
 export default {
   setup() {
@@ -44,7 +47,6 @@ export default {
     const getData = async () => {
       try {
         loading.value = true;
-
         const response = await fetch("http://localhost:3000/api/v1/products");
         if (!response.ok) error.value = "something went wrong";
         const data = await response.json();
@@ -62,5 +64,6 @@ export default {
       error,
     };
   },
+  components: { Loading },
 };
 </script>

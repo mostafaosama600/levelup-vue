@@ -1,8 +1,10 @@
 <template>
   <div class="container mx-auto mt-3">
     <div class="flex justify-between items-center gap-5 mx-3 my-3">
-      <div v-if="loading">Loading...</div>
-      <div v-else-if="error">{{ error }}</div>
+      <Loading v-if="loading" />
+      <div v-else-if="error" class="bg-red-200 p-2 rounded">
+        {{ error }}
+      </div>
       <div class="grid grid-cols-3 gap-4 mx-3 my-3">
         <div
           v-for="(product, index) in filteredProducts"
@@ -33,6 +35,7 @@
 <script>
 import { useRoute } from "vue-router";
 import { onMounted, ref, computed } from "vue";
+import Loading from "./Loading.vue";
 
 export default {
   setup() {
@@ -41,7 +44,6 @@ export default {
     const loading = ref(false);
     const error = ref("");
     const searchQuery = route.query.q;
-
     const getQuerySearched = async () => {
       loading.value = true;
       try {
@@ -57,15 +59,12 @@ export default {
         loading.value = false;
       }
     };
-
     onMounted(getQuerySearched);
-
     const filteredProducts = computed(() => {
       return products.value.filter((product) =>
         product.name.toLowerCase().includes(searchQuery.toLowerCase())
       );
     });
-
     return {
       loading,
       products,
@@ -73,5 +72,6 @@ export default {
       filteredProducts,
     };
   },
+  components: { Loading },
 };
 </script>
