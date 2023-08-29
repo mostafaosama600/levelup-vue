@@ -12,7 +12,7 @@ const routes = [
   { path: "/search-result", component: SearchResult, name: "SearchResult" },
   { path: "/user-profile", component: UserProfile },
   { path: "/sign-up", component: Signup },
-  { path: "/sign-in", component: Signin },
+  { path: "/sign-in", component: Signin, name: "sign-in" },
 ];
 
 const router = createRouter({
