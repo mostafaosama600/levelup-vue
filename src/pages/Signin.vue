@@ -139,5 +139,3 @@ export default {
   },
 };
 </script>
-
-lindana@gmail.com
