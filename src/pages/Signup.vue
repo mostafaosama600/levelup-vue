@@ -157,7 +157,6 @@ export default {
         }
       }
     }
-    // Linda55
     function validationRegisterForm() {
       let scheme = Joi.object({
         name: Joi.string().min(3).max(20).required(),
@@ -183,5 +182,3 @@ export default {
   },
 };
 </script>
-
-Something79
