@@ -44,12 +44,13 @@ export default {
     const getData = async () => {
       try {
         loading.value = true;
+
         const response = await fetch("http://localhost:3000/api/v1/products");
         if (!response.ok) error.value = "something went wrong";
         const data = await response.json();
         products.value = data.result;
       } catch (err) {
-        error.value = "something went wrong";
+        error.value = err.message || "Something went wrong";
       } finally {
         loading.value = false;
       }

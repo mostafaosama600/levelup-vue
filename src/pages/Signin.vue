@@ -91,7 +91,8 @@ export default {
       } else {
         try {
           loading.value = true;
-
+          const url =
+            import.meta.env.VUE_APP_API_URL || process.env.VUE_APP_API_URL;
           const response = await fetch(
             "http://localhost:3000/api/v1/users/signin",
             {
@@ -110,7 +111,7 @@ export default {
             errors.value = dataError.msg;
           }
         } catch (err) {
-          errors.value = `${err} something went wrong`;
+          errors.value = err.message || "Something went wrong";
         } finally {
           loading.value = false;
         }
